@@ -10,7 +10,6 @@
 
 #include "stdbool.h"
 #include "stddef.h"
-#include "unistd.h"
 
 bool initializeSocket();
 void shutdownSocket();
