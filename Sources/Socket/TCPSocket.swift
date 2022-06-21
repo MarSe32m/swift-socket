@@ -46,7 +46,6 @@ public final class TCPSocket {
     public final func accept() throws -> TCPSocket {
         let senderAddr = UnsafeMutablePointer<sockaddr_in>.allocate(capacity: 1)
         let handle = _accept(self.handle, senderAddr)
-        print(handle)
         if handle < 0 {
             throw SocketError.socketAcceptError
         }
