@@ -1,0 +1,40 @@
+{
+    "configurations": [
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug Socket",
+            "program": ".build/debug/Socket",
+            "args": [],
+            "cwd": "${workspaceFolder:swift-socket}",
+            "preLaunchTask": "swift: Build Debug Socket"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Release Socket",
+            "program": ".build/release/Socket",
+            "args": [],
+            "cwd": "${workspaceFolder:swift-socket}",
+            "preLaunchTask": "swift: Build Release Socket"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug SocketTests",
+            "program": ".build/debug/SocketTests",
+            "args": [],
+            "cwd": "${workspaceFolder:swift-socket}",
+            "preLaunchTask": "swift: Build Debug SocketTests"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Release SocketTests",
+            "program": ".build/release/SocketTests",
+            "args": [],
+            "cwd": "${workspaceFolder:swift-socket}",
+            "preLaunchTask": "swift: Build Release SocketTests"
+        }
+    ]
+}
