@@ -35,13 +35,13 @@ bool _openSocket(int handle, unsigned short port) {
     #if PLATFORM == PLATFORM_WINDOWS
     ZeroMemory(&address, sizeof(address));
     #else
-    bzero(&address, sizeof(address));
+    memset(&address, 0, sizeof(address));
     #endif
     address.sin_family = AF_INET;
     address.sin_addr.s_addr = htonl(INADDR_ANY);
     address.sin_port = htons(port);
     
-    return bind(handle, (const struct sockaddr*) &address, sizeof(struct sockaddr_in)) >= 0;
+    return bind(handle, (const struct sockaddr*) &address, sizeof(struct sockaddr_in)) == 0;
 }
 
 void _closeSocket(int handle) {
@@ -57,7 +57,7 @@ bool _connect(int handle, const char* hostname, unsigned short port) {
     serverAddress.sin_family = AF_INET;
     serverAddress.sin_addr.s_addr = inet_addr(hostname);
     serverAddress.sin_port = htons(port);
-    return connect(handle, (const struct sockaddr*) &serverAddress, sizeof(struct sockaddr_in)) >= 0;
+    return connect(handle, (const struct sockaddr*) &serverAddress, sizeof(struct sockaddr_in)) == 0;
 }
 
 bool _listen(int handle, int backlog) {
@@ -68,7 +68,7 @@ int _accept(int handle, struct sockaddr_in *clientAddress) {
     if (clientAddress == NULL) {
         return accept(handle, NULL, NULL);
     }
-    int len = sizeof(*clientAddress);
+    unsigned int len = sizeof(*clientAddress);
     return accept(handle, (struct sockaddr*)clientAddress, &len);
 }
 

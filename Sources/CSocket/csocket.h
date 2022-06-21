@@ -29,6 +29,9 @@
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include <fcntl.h>
+#include <arpa/inet.h>
+#include <unistd.h>
+#include <string.h>
 #endif
 
 #if PLATFORM == PLATFORM_WINDOWS

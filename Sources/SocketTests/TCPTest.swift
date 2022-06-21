@@ -1,15 +1,15 @@
 import Socket
-import Foundation
 
-func TCPTest() throws {
-    Thread.detachNewThread {
+func TCPTest() async throws {
+    Task.detached {
         do {
             try serverProcedure()
         } catch {
             print(error)
         }
     }
-    try clientProcedure()
+    try await Task.sleep(nanoseconds: 1_000_000_000)
+    try await clientProcedure()
 }
 
 fileprivate func serverProcedure() throws {
@@ -37,7 +37,7 @@ fileprivate func serverProcedure() throws {
     listenSocket.close()
 }
 
-fileprivate func clientProcedure() throws {
+fileprivate func clientProcedure() async throws {
     let socket = try TCPSocket()
     try socket.connect(host: "127.0.0.1", port: 25565)
     var buffer: [UInt8] = [1,2,3,4,54,56,6,3]
@@ -50,4 +50,5 @@ fileprivate func clientProcedure() throws {
         //print("Client received \(bytesReceived) bytes.")
     }
     socket.close()
+    try await Task.sleep(nanoseconds: 1_000_000_000)
 }

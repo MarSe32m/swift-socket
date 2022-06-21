@@ -5,6 +5,7 @@ import PackageDescription
 
 let package = Package(
     name: "swift-socket",
+    platforms: [.macOS(.v10_15)],
     products: [
         .library(name: "Socket", targets: ["Socket"]),
     ],
