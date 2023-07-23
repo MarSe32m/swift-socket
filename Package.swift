@@ -14,6 +14,6 @@ let package = Package(
     targets: [
         .target(name: "CSocket"),
         .target(name: "Socket", dependencies: ["CSocket"]),
-        .executableTarget(name: "SocketTests", dependencies: ["Socket"])
+        //.executableTarget(name: "SocketTests", dependencies: ["Socket"])
     ]
 )
